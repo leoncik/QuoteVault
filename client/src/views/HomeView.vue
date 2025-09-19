@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import HomeHeader from '@/components/HomeHeader.vue'
+import QuoteList from '@/components/QuoteList.vue'
 </script>
 
 <template>
+  <HomeHeader />
   <main>
-    <TheWelcome />
+    <QuoteList />
   </main>
 </template>
