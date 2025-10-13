@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import QuoteList from '@/components/QuoteList.vue';
 import HomeHeader from '@/components/HomeHeader.vue'
-import QuoteList from '@/components/QuoteList.vue'
 </script>
 
 <template>
   <HomeHeader />
   <main>
-    <p>HOME</p>
+    <QuoteList />
   </main>
 </template>
