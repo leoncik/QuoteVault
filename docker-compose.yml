@@ -1,6 +1,6 @@
 services:
 
-  # DATABSE SERVICE
+  # DATABASE SERVICE
   postgres:
     image: postgres:15
     container_name: database_container
@@ -12,6 +12,21 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  # CLIENT SERVICE
+  client:
+    container_name: vue_client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    command: pnpm dev
+    depends_on:
+      - postgres
 
 volumes:
   postgres_data:
