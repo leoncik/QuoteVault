@@ -1,23 +1,25 @@
 <script setup lang="ts">
-import { QuoteIcon, Feather } from 'lucide-vue-next'
 import { ref, onMounted } from 'vue'
 
-const randomQuote = ref({
-  text: '',
-  author: '',
-})
+interface Quote {
+  text: string
+  author: string
+}
 
+const randomQuote = ref<Quote>({ text: '', author: '' })
 const isLoading = ref(true)
 
-function getNewQuote() {
+async function getNewQuote() {
   isLoading.value = true
-  setTimeout(() => {
-    randomQuote.value = {
-      text: 'Be yourself; everyone else is already taken.',
-      author: 'Oscar Wilde',
-    }
+  try {
+    const res = await fetch('/api/quotes/random')
+    const data: Quote = await res.json()
+    randomQuote.value = data
+  } catch (err) {
+    console.error(err)
+  } finally {
     isLoading.value = false
-  }, 1500)
+  }
 }
 
 onMounted(() => {
