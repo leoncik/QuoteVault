@@ -1,4 +1,4 @@
-import { http, HttpResponse } from 'msw'
+import { delay, http, HttpResponse } from 'msw'
 
 // Mocked quotes.
 const quotes = [
@@ -12,7 +12,8 @@ const quotes = [
 ]
 
 export const handlers = [
-  http.get('/api/quotes/random', () => {
+  http.get('/api/quotes/random', async () => {
+    await delay(1000)
     const randomIndex = Math.floor(Math.random() * quotes.length)
     const randomQuote = quotes[randomIndex]
 

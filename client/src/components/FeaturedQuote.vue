@@ -1,49 +1,42 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { useQuery, useQueryClient } from '@tanstack/vue-query'
+import type { Quote } from '@/types/Quotes'
+import { getRandomQuote } from '@/helpers/fetchers'
 
-interface Quote {
-  text: string
-  author: string
-}
+const queryClient = useQueryClient()
 
-const randomQuote = ref<Quote>({ text: '', author: '' })
-const isLoading = ref(true)
-
-async function getNewQuote() {
-  isLoading.value = true
-  try {
-    const res = await fetch('/api/quotes/random')
-    const data: Quote = await res.json()
-    randomQuote.value = data
-  } catch (err) {
-    console.error(err)
-  } finally {
-    isLoading.value = false
-  }
-}
-
-onMounted(() => {
-  getNewQuote()
+const { data, isPending, isError, error, refetch, isRefetching } = useQuery<Quote>({
+  queryKey: ['randomQuote'],
+  queryFn: getRandomQuote,
+  // No auto refetching when switching tabs.
+  refetchOnWindowFocus: false,
 })
+
+function getNewQuote() {
+  refetch()
+}
 </script>
 
 <template>
   <div class="featured-quote">
-    <!-- Loading State -->
-    <div v-if="isLoading" class="loading-container">
+    <div v-if="isPending || isRefetching" class="loading-container">
       <Feather class="loading-icon" :size="64" />
       <p class="loading-text">Loading inspiration...</p>
     </div>
 
-    <!-- Quote State -->
+    <div v-else-if="isError" class="error-container">
+      <p class="error-text">Something went wrong: {{ error?.message }}</p>
+      <button class="quote-button" @click="getNewQuote">Try Again</button>
+    </div>
+
     <div v-else class="quote-container">
       <div class="quote-icon">
         <QuoteIcon :size="80" />
       </div>
 
       <div class="quote-content">
-        <blockquote class="quote-text">“{{ randomQuote.text }}”</blockquote>
-        <cite class="quote-author">— {{ randomQuote.author }}</cite>
+        <blockquote class="quote-text">“{{ data?.text }}”</blockquote>
+        <cite class="quote-author">— {{ data?.author }}</cite>
         <button class="quote-button" @click="getNewQuote">New Quote</button>
       </div>
     </div>
