@@ -28,14 +28,14 @@ function clearFilters() {
             : `All Quotes (${quotes.length})`
         }}
       </h2>
-      <Button
+      <button
         v-if="searchQuery || selectedCategory !== 'all' || selectedTags.length > 0"
         variant="ghost"
         class="text-quote-author hover:text-quote-accent"
         @click="clearFilters"
       >
         Clear filters
-      </Button>
+      </button>
     </div>
   </div>
 </template>

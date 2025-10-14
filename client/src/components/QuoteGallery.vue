@@ -58,10 +58,10 @@ function setCurrentView(view: string) {
         <p class="text-quote-author mb-6">
           Try adjusting your search terms or add a new quote to get started.
         </p>
-        <Button class="gradient-accent" @click="setCurrentView('form')">
+        <button class="gradient-accent" @click="setCurrentView('form')">
           <PlusCircle class="mr-2" :size="16" />
           Add Your First Quote
-        </Button>
+        </button>
       </div>
     </template>
   </main>
