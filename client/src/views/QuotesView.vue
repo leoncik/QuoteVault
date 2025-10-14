@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import QuoteList from '@/components/QuoteList.vue';
-import HomeHeader from '@/components/HomeHeader.vue'
+import QuoteHeader from '@/components/QuoteHeader.vue'
+import ResultsHeader from '@/components/ResultsHeader.vue'
+import QuoteGallery from '@/components/QuoteGallery.vue'
+import QuoteSearchForm from '@/components/QuoteSearchForm.vue'
 </script>
 
 <template>
-  <HomeHeader />
-  <main>
-    <QuoteList />
-  </main>
+  <div className="min-h-screen gradient-hero">
+    <QuoteHeader />
+    <QuoteSearchForm />
+    <ResultsHeader />
+    <QuoteGallery />
+  </div>
 </template>
