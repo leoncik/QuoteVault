@@ -12,8 +12,6 @@ import { ArrowRight } from 'lucide-vue-next'
   </div>
 </template>
 
-<script setup lang="ts"></script>
-
 <style scoped>
 .cta {
   display: flex;

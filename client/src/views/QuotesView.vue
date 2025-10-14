@@ -6,10 +6,17 @@ import QuoteSearchForm from '@/components/QuoteSearchForm.vue'
 </script>
 
 <template>
-  <div className="min-h-screen gradient-hero">
+  <div className="wrapper">
     <QuoteHeader />
     <QuoteSearchForm />
     <ResultsHeader />
     <QuoteGallery />
   </div>
 </template>
+
+<style scoped>
+.wrapper {
+  min-height: 100vh;
+  background: var(--gradient-hero);
+}
+</style>

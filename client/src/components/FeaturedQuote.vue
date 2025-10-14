@@ -2,7 +2,7 @@
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
 import type { Quote } from '@/types/Quotes'
 import { getRandomQuote } from '@/helpers/fetchers'
-import { QuoteIcon } from 'lucide-vue-next'
+import { QuoteIcon, Feather } from 'lucide-vue-next'
 
 const queryClient = useQueryClient()
 
