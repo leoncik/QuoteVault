@@ -41,3 +41,11 @@ The containers will automatically:
 - Expose the app on your local machine (default: http://localhost:5173/ for the client and http://localhost:3000/ for the server).
 
 ## Screenshots
+
+<img width="1281" height="854" alt="image" src="https://github.com/user-attachments/assets/20e65250-c40e-47c2-984e-3fdf56d01f7d" />
+
+<img width="599" height="884" alt="image" src="https://github.com/user-attachments/assets/407bc355-693c-4c7f-8036-afc7bec1aa02" />
+
+<img width="1281" height="854" alt="image" src="https://github.com/user-attachments/assets/618d5b6f-74b5-4eff-81b1-578fc50186e4" />
+
+
