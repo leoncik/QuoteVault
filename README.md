@@ -2,6 +2,9 @@
 
 QuoteVault is a full-stack web application built to demonstrate modern development practices with Vue.js (frontend) and NestJS (backend). It provides a simple yet elegant interface for managing and displaying memorable quotes.
 
+> ⚠️ **Project Status:** Active Development  
+> This project is currently under construction — the backend and several frontend features are still being implemented.
+
 The project is fully Dockerized for easy setup and consistent development environments.
 
 ## Table of contents
