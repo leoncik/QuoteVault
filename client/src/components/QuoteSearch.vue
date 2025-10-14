@@ -95,7 +95,8 @@ function clearAllTags(): void {
 .quote-search {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  font-family: system-ui, sans-serif;
 }
 
 .search-bar {
@@ -103,9 +104,10 @@ function clearAllTags(): void {
   flex-wrap: wrap;
   gap: 1rem;
   padding: 1.5rem;
-  background: #f8f8f8;
-  border-radius: 8px;
+  background-color: hsl(var(--quote-bg));
+  border-radius: var(--radius);
   align-items: center;
+  box-shadow: var(--shadow-quote);
 }
 
 .search-input {
@@ -116,109 +118,141 @@ function clearAllTags(): void {
 .search-input .icon {
   position: absolute;
   top: 50%;
-  left: 10px;
+  left: 0.75rem;
   transform: translateY(-50%);
   opacity: 0.6;
+  color: hsl(var(--muted-foreground));
 }
 
 .search-input input {
   width: 100%;
-  padding: 0.5rem 0.5rem 0.5rem 2rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
   font-size: 0.95rem;
-  background-color: #fff;
+  background-color: hsl(var(--background) / 0.5);
+  color: hsl(var(--foreground));
+  transition: border 0.2s, background 0.2s;
+}
+
+.search-input input:focus {
+  border-color: hsl(var(--accent));
+  outline: none;
+  background-color: hsl(var(--background) / 0.7);
 }
 
 .category-select select {
   padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  background-color: #fff;
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--background) / 0.5);
+  color: hsl(var(--foreground));
+  min-width: 10rem;
+  transition: border 0.2s, background 0.2s;
+}
+
+.category-select select:focus {
+  border-color: hsl(var(--accent));
+  outline: none;
 }
 
 .btn-accent {
-  background: linear-gradient(90deg, #7a5fff, #5ac8fa);
-  color: white;
+  background: var(--gradient-accent);
+  color: hsl(var(--accent-foreground));
   border: none;
   padding: 0.6rem 1.2rem;
-  border-radius: 6px;
+  border-radius: var(--radius);
   cursor: pointer;
   font-weight: 500;
+  transition: opacity 0.2s, box-shadow 0.2s;
 }
 
 .btn-accent:hover {
-  opacity: 0.9;
-}
-
-.btn-clear {
-  background: none;
-  border: none;
-  font-size: 0.8rem;
-  color: #888;
-  cursor: pointer;
-}
-
-.btn-clear:hover {
-  color: #007bff;
+  opacity: 0.95;
+  box-shadow: var(--shadow-glow);
 }
 
 .tag-filter {
-  background: #f8f8f8;
-  border-radius: 8px;
+  background-color: hsl(var(--quote-bg));
+  border-radius: var(--radius);
   padding: 1rem;
+  box-shadow: var(--shadow-quote);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .tag-header {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 0.75rem;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .tag-header .icon {
-  opacity: 0.7;
+  color: hsl(var(--quote-accent));
 }
 
 .tag-header .label {
   font-size: 0.9rem;
   font-weight: 500;
+  color: hsl(var(--foreground));
+}
+
+.btn-clear {
+  background: none;
+  border: none;
+  font-size: 0.75rem;
+  color: hsl(var(--muted-foreground));
+  cursor: pointer;
+  margin-left: auto;
+  transition: color 0.2s;
+}
+
+.btn-clear:hover {
+  color: hsl(var(--quote-accent));
 }
 
 .tag-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .tag {
-  background: #e9ecef;
-  color: #555;
+  background-color: hsl(var(--secondary) / 0.5);
+  color: hsl(var(--muted-foreground));
   font-size: 0.8rem;
-  border-radius: 4px;
-  padding: 0.3rem 0.6rem;
-  cursor: pointer;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.5rem;
   border: 1px solid transparent;
-  transition: 0.2s;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
 }
 
 .tag:hover {
-  background: #dfe6fd;
-  color: #3366ff;
+  background-color: hsl(var(--quote-accent) / 0.2);
+  color: hsl(var(--quote-accent));
 }
 
 .tag.active {
-  background: rgba(102, 153, 255, 0.2);
-  border: 1px solid rgba(102, 153, 255, 0.3);
-  color: #3366ff;
+  background-color: hsl(var(--quote-accent) / 0.2);
+  border: 1px solid hsl(var(--quote-accent) / 0.3);
+  color: hsl(var(--quote-accent));
 }
 
 .tag .remove {
   border: none;
   background: none;
-  margin-left: 0.4rem;
-  font-size: 0.9em;
+  margin-left: 0.25rem;
+  font-size: 0.8rem;
   cursor: pointer;
-  color: #ff6b6b;
+  color: hsl(var(--destructive));
+  transition: color 0.2s;
+}
+
+.tag .remove:hover {
+  color: hsl(var(--destructive-foreground));
 }
 </style>

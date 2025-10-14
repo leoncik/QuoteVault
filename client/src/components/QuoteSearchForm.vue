@@ -33,7 +33,7 @@ function handleSearch(query: string, category: string, tags: string[]) {
 
 <style scoped>
 .container {
-  max-width: 96rem;
+  max-width: 72rem;
   margin: 0 auto;
   padding: 0 1.5rem;
   margin-bottom: 2rem;

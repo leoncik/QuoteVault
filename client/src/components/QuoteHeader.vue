@@ -24,7 +24,6 @@ import { RouterLink } from 'vue-router'
 .header {
   padding: 1.5rem;
   text-align: center;
-  background-color: hsl(var(--background));
   color: hsl(var(--foreground));
 }
 
@@ -41,7 +40,7 @@ import { RouterLink } from 'vue-router'
 }
 
 .site-title {
-  font-size: 2.25rem; /* text-4xl */
+  font-size: 2.25rem;
   font-weight: 700;
   background: linear-gradient(to right, hsl(var(--quote-text)), hsl(var(--quote-accent)));
   -webkit-background-clip: text;
@@ -50,14 +49,14 @@ import { RouterLink } from 'vue-router'
 
 @media (min-width: 768px) {
   .site-title {
-    font-size: 3rem; /* md:text-5xl */
+    font-size: 3rem;
   }
 }
 
 .header-description {
-  font-size: 1.125rem; /* text-lg */
+  font-size: 1.125rem;
   color: hsl(var(--quote-author));
-  max-width: 42rem; /* max-w-2xl */
+  max-width: 42rem;
   margin: 0 auto;
 }
 

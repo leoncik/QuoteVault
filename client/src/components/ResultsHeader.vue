@@ -19,9 +19,9 @@ function clearFilters() {
 </script>
 
 <template>
-  <div className="max-w-6xl mx-auto px-6 mb-6">
-    <div className="flex items-center justify-between">
-      <h2 className="text-2xl font-semibold text-quote-text">
+  <div class="quotes-container">
+    <div class="quotes-header">
+      <h2 class="quotes-title">
         {{
           searchQuery || selectedCategory !== 'all' || selectedTags.length > 0
             ? `Found ${filteredQuotes.length} quotes`
@@ -30,8 +30,7 @@ function clearFilters() {
       </h2>
       <button
         v-if="searchQuery || selectedCategory !== 'all' || selectedTags.length > 0"
-        variant="ghost"
-        class="text-quote-author hover:text-quote-accent"
+        class="clear-button"
         @click="clearFilters"
       >
         Clear filters
@@ -39,3 +38,37 @@ function clearFilters() {
     </div>
   </div>
 </template>
+
+<style scoped>
+.quotes-container {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.quotes-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quotes-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--quote-text, #222);
+}
+
+.clear-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--quote-author, #555);
+  font-size: 1rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.clear-button:hover {
+  color: var(--quote-accent, #007bff);
+}
+</style>
