@@ -1,5 +1,5 @@
 import { delay, http, HttpResponse } from 'msw'
-import { allQuotes } from './data'
+import { allQuotes, tags } from './data'
 
 export const handlers = [
   // Returns a random quote.
@@ -27,5 +27,11 @@ export const handlers = [
       quotes,
       hasMore: end < allQuotes.length,
     })
+  }),
+
+  // Returns tags
+  http.get('/api/tags', async () => {
+    await delay(700)
+    return HttpResponse.json(tags)
   }),
 ]

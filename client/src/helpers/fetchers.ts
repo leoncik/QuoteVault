@@ -16,3 +16,9 @@ export async function getQuotes({ page = 1, limit = 6 }) {
   if (!res.ok) throw new Error('Failed to fetch quotes')
   return res.json()
 }
+
+export async function getQuoteTags() {
+  const res = await fetch("/api/tags")
+  if (!res.ok) throw new Error('Failed to fetch tags')
+  return res.json()
+}

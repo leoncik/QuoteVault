@@ -27,3 +27,14 @@ export const allQuotes = [
   { id: 9, text: 'Simplicity is the ultimate sophistication.', author: 'Leonardo da Vinci' },
   { id: 10, text: 'Turn your wounds into wisdom.', author: 'Oprah Winfrey' },
 ]
+
+export const tags = [
+  'achievement',
+  'action',
+  'authenticity',
+  'fear',
+  'life',
+  'love',
+  'time',
+  'work',
+]

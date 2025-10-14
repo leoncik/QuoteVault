@@ -3,8 +3,12 @@ import QuoteSearch from './QuoteSearch.vue'
 import { ref } from 'vue'
 import { PlusCircle } from 'lucide-vue-next'
 
+const { tags } = defineProps<{
+  tags: string[]
+}>()
+
 const categories = ref<string[]>(['Inspiration', 'Humor', 'Life'])
-const availableTags = ref<string[]>(['motivation', 'funny', 'wisdom'])
+const availableTags = ref<string[]>(tags ?? [])
 
 function handleSearch(query: string, category: string, tags: string[]) {
   console.log('Search:', { query, category, tags })
