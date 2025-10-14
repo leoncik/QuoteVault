@@ -1,30 +1,49 @@
 <script setup lang="ts">
-import { QuoteIcon } from 'lucide-vue-next'
-import { ref } from 'vue'
+import { QuoteIcon, Feather } from 'lucide-vue-next'
+import { ref, onMounted } from 'vue'
 
 const randomQuote = ref({
-  text: 'Be yourself; everyone else is already taken.',
-  author: 'Oscar Wilde',
+  text: '',
+  author: '',
 })
 
+const isLoading = ref(true)
+
 function getNewQuote() {
-  // Replace this with your quote logic
-  console.log('Fetching new quote...')
+  isLoading.value = true
+  setTimeout(() => {
+    randomQuote.value = {
+      text: 'Be yourself; everyone else is already taken.',
+      author: 'Oscar Wilde',
+    }
+    isLoading.value = false
+  }, 1500)
 }
+
+onMounted(() => {
+  getNewQuote()
+})
 </script>
 
 <template>
   <div class="featured-quote">
-    <div class="quote-icon">
-      <QuoteIcon :size="80" />
+    <!-- Loading State -->
+    <div v-if="isLoading" class="loading-container">
+      <Feather class="loading-icon" :size="64" />
+      <p class="loading-text">Loading inspiration...</p>
     </div>
 
-    <div class="quote-content">
-      <blockquote class="quote-text">“{{ randomQuote.text }}”</blockquote>
+    <!-- Quote State -->
+    <div v-else class="quote-container">
+      <div class="quote-icon">
+        <QuoteIcon :size="80" />
+      </div>
 
-      <cite class="quote-author"> — {{ randomQuote.author }} </cite>
-
-      <button class="quote-button" @click="getNewQuote">New Quote</button>
+      <div class="quote-content">
+        <blockquote class="quote-text">“{{ randomQuote.text }}”</blockquote>
+        <cite class="quote-author">— {{ randomQuote.author }}</cite>
+        <button class="quote-button" @click="getNewQuote">New Quote</button>
+      </div>
     </div>
   </div>
 </template>
@@ -37,7 +56,11 @@ function getNewQuote() {
   box-shadow: var(--shadow-quote);
   border: 1px solid hsl(var(--border));
   border-radius: var(--radius);
+  min-height: 400px;
   padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -52,6 +75,25 @@ function getNewQuote() {
   box-shadow: var(--shadow-elegant);
 }
 
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  animation: fade-in 0.5s ease-out;
+}
+
+.loading-icon {
+  color: hsl(var(--quote-accent));
+  animation: spin 3s ease-in-out infinite;
+}
+
+.loading-text {
+  color: hsl(var(--quote-author));
+  font-size: 1.125rem;
+  animation: pulse 1.5s infinite;
+}
+
 .quote-icon {
   position: absolute;
   top: 2rem;
@@ -60,12 +102,19 @@ function getNewQuote() {
   pointer-events: none;
 }
 
+.quote-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .quote-content {
   position: relative;
   z-index: 10;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  animation: fade-in 0.5s ease-out;
 }
 
 .quote-text {
@@ -111,5 +160,35 @@ function getNewQuote() {
 .quote-button:hover {
   background-color: hsl(var(--accent) / 0.1);
   border-color: hsl(var(--accent));
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
