@@ -1,19 +1,14 @@
 <script setup lang="ts">
-import CTA from '@/components/CTA.vue';
-import FeaturedQuote from '@/components/FeaturedQuote.vue';
-import LogoTitle from '@/components/LogoTitle.vue';
+import CTA from '@/components/CTA.vue'
+import FeaturedQuote from '@/components/FeaturedQuote.vue'
+import LogoTitle from '@/components/LogoTitle.vue'
 </script>
 
 <template>
   <div className="home">
     <div className="home-content">
-      {/* Logo & Title */}
       <LogoTitle />
-
-      {/* Featured Quote */}
       <FeaturedQuote />
-
-      {/* CTA */}
       <CTA />
     </div>
   </div>
@@ -30,6 +25,6 @@ import LogoTitle from '@/components/LogoTitle.vue';
 
 .home-content {
   margin-left: auto;
-    margin-right: auto;
+  margin-right: auto;
 }
 </style>
