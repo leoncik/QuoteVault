@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, onUnmounted } from 'vue'
 import { useInfiniteQuery } from '@tanstack/vue-query'
 import QuoteCard from './QuoteCard.vue'
 import { QuoteIcon, PlusCircle } from 'lucide-vue-next'
@@ -34,12 +34,30 @@ watch(data, (val) => {
 
 // IntersectionObserver for infinite scroll
 onMounted(() => {
-  const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting && hasNextPage.value) {
-      fetchNextPage()
-    }
-  })
-  if (observerTarget.value) observer.observe(observerTarget.value)
+  watch(
+    observerTarget,
+    (element) => {
+      if (!element) return
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting && hasNextPage.value) {
+            fetchNextPage()
+          }
+        },
+        {
+          root: null, // viewport
+          rootMargin: '200px', // trigger a bit before reaching bottom
+          threshold: 0.1, // when 10% of target is visible
+        },
+      )
+
+      observer.observe(element)
+
+      onUnmounted(() => observer.disconnect())
+    },
+    { immediate: true },
+  )
 })
 </script>
 
