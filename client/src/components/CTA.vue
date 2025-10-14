@@ -4,10 +4,10 @@ import { ArrowRight } from 'lucide-vue-next'
 
 <template>
   <div class="cta">
-    <button class="cta-button">
+    <RouterLink to="/quotes" class="cta-button">
       Explore All Quotes
       <ArrowRight class="cta-icon" :size="20" />
-    </button>
+    </RouterLink>
     <p class="cta-description">Browse our collection of inspiring quotes</p>
   </div>
 </template>
