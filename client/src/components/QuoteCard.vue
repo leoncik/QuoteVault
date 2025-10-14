@@ -15,7 +15,7 @@
         <span class="quote-category">{{ quote.category }}</span>
 
         <div class="quote-tags">
-          <span v-for="tag in quote.tags.slice(0, 2)" :key="tag" class="quote-tag">
+          <span v-for="tag in (quote.tags ?? []).slice(0, 2)" :key="tag" class="quote-tag">
             #{{ tag }}
           </span>
         </div>

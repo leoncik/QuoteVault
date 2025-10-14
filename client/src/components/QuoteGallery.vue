@@ -1,52 +1,65 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, watch } from 'vue'
+import { useInfiniteQuery } from '@tanstack/vue-query'
 import QuoteCard from './QuoteCard.vue'
 import { QuoteIcon, PlusCircle } from 'lucide-vue-next'
+import type { Quote } from '@/types/Quotes'
+import { getQuotes } from '@/helpers/fetchers'
 
-// Mock state
-const quotes = ref([
-  { id: 1, text: 'Be yourself', author: 'Oscar Wilde', category: 'Art', tags: ['Art'] },
-  {
-    id: 2,
-    text: 'Stay hungry, stay foolish',
-    author: 'Steve Jobs',
-    category: 'Life',
-    tags: ['Apple', 'Tech'],
-  },
-])
-
-const filteredQuotes = ref(quotes.value)
-const visibleQuotes = ref(quotes.value.slice(0, 6))
-const hasMore = ref(true)
-
-// Infinite scroll target
 const observerTarget = ref<HTMLElement | null>(null)
 
-// Handlers
-function handleQuoteClick(quote: any) {
-  console.log('Clicked quote:', quote)
+// Query function
+const fetchQuotes = async ({ pageParam = 1 }) => {
+  // pageParam starts at 1
+  const res = await getQuotes({ page: pageParam, limit: 6 })
+  return res
 }
 
-function setCurrentView(view: string) {
-  console.log('Changing view to:', view)
-}
+const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } = useInfiniteQuery({
+  queryKey: ['quotes'],
+  queryFn: fetchQuotes,
+  getNextPageParam: (lastPage, pages) => (lastPage.hasMore ? pages.length + 1 : undefined),
+  initialPageParam: 1,
+  refetchOnWindowFocus: false,
+})
+
+const allQuotes = ref<Quote[]>([])
+
+// Flatten pages
+watch(data, (val) => {
+  if (val) {
+    allQuotes.value = val.pages.flatMap((page) => page.quotes)
+  }
+})
+
+// IntersectionObserver for infinite scroll
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && hasNextPage.value) {
+      fetchNextPage()
+    }
+  })
+  if (observerTarget.value) observer.observe(observerTarget.value)
+})
 </script>
 
 <template>
   <main class="quote-container">
-    <template v-if="filteredQuotes.length > 0">
+    <!-- Loading initial state -->
+    <div v-if="status === 'pending'" class="loading">
+      <div class="loading-text">Loading quotes...</div>
+    </div>
+
+    <template v-else-if="allQuotes.length > 0">
       <div class="quote-grid">
-        <QuoteCard
-          v-for="quote in visibleQuotes"
-          :key="quote.id"
-          :quote="quote"
-          @click="handleQuoteClick(quote)"
-        />
+        <QuoteCard v-for="quote in allQuotes" :key="quote.id" :quote="quote" />
       </div>
 
       <!-- Infinite Scroll Trigger -->
-      <div v-if="hasMore" ref="observerTarget" class="loading">
-        <div class="loading-text">Loading more quotes...</div>
+      <div v-if="hasNextPage || isFetchingNextPage" ref="observerTarget" class="loading">
+        <div class="loading-text">
+          {{ isFetchingNextPage ? 'Loading more quotes...' : 'Scroll for more' }}
+        </div>
       </div>
     </template>
 
@@ -56,7 +69,7 @@ function setCurrentView(view: string) {
         <QuoteIcon class="empty-icon" :size="64" />
         <h3 class="empty-title">No quotes found</h3>
         <p class="empty-text">Try adjusting your search terms or add a new quote to get started.</p>
-        <button class="add-quote-btn" @click="setCurrentView('form')">
+        <button class="add-quote-btn">
           <PlusCircle class="icon" :size="16" />
           Add Your First Quote
         </button>
