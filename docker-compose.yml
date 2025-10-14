@@ -13,6 +13,27 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  # SERVER SERVICE
+  server:
+    container_name: nest_server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_USER: admin
+      DATABASE_PASSWORD: password123
+      DATABASE_NAME: quote_vault_db
+    command: pnpm start:dev
+
   # CLIENT SERVICE
   client:
     container_name: vue_client
