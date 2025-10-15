@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { Search, Tag } from 'lucide-vue-next'
 
 interface QuoteSearchProps {
@@ -14,9 +14,34 @@ const query = ref<string>('')
 const selectedCategory = ref<string>('all')
 const selectedTags = ref<string[]>([])
 
+let debounceTimeout: ReturnType<typeof setTimeout> | null = null
+
 function handleSearch(): void {
   props.onSearch?.(query.value, selectedCategory.value, selectedTags.value)
 }
+
+function debouncedSearch(): void {
+  if (debounceTimeout) {
+    clearTimeout(debounceTimeout)
+  }
+
+  debounceTimeout = setTimeout(() => {
+    handleSearch()
+  }, 500)
+}
+
+// Watch for changes in search inputs
+watch(query, () => {
+  debouncedSearch()
+})
+
+watch(selectedCategory, () => {
+  handleSearch()
+})
+
+watch(selectedTags, () => {
+  handleSearch()
+})
 
 function addTag(tag: string): void {
   if (!selectedTags.value.includes(tag)) {
