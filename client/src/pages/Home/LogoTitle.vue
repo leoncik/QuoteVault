@@ -26,7 +26,6 @@ import { QuoteIcon } from 'lucide-vue-next'
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  margin-bottom: 1.5rem;
 }
 
 .logo-title-icon {

@@ -57,6 +57,7 @@ function getNewQuote() {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 48px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -99,7 +100,6 @@ function getNewQuote() {
 }
 
 .quote-container {
-  position: relative;
   width: 100%;
   height: 100%;
 }

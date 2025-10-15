@@ -212,7 +212,6 @@ function clearAllTags(): void {
   font-size: 0.75rem;
   color: hsl(var(--muted-foreground));
   cursor: pointer;
-  margin-left: auto;
   transition: color 0.2s;
 }
 
