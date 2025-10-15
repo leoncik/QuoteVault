@@ -8,12 +8,12 @@ import { QuoteModule } from './quote/quote.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'admin',
-      password: 'password123',
-      database: 'quote_vault_db',
-      entities: [],
+      host: process.env.DATABASE_HOST || 'localhost',
+      port: parseInt(process.env.DATABASE_PORT || '5432'),
+      username: process.env.DATABASE_USER || 'admin',
+      password: process.env.DATABASE_PASSWORD || 'password123',
+      database: process.env.DATABASE_NAME || 'quote_vault_db',
+      autoLoadEntities: true,
       synchronize: true,
     }),
     QuoteModule,

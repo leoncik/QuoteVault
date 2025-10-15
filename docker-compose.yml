@@ -21,7 +21,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./server:/app
-      - /app/node_modules
+      # Mount PNPM store to preserve dependencies
+      - /root/.pnpm-store
     ports:
       - "3000:3000"
     depends_on:
