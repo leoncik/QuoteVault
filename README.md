@@ -41,7 +41,10 @@ The containers will automatically:
 
 - Build and start the frontend and backend
 - Connect to the configured database
-- Expose the app on your local machine (default: http://localhost:5173/ for the client and http://localhost:3000/ for the server).
+- Expose the app on your local machines.
+- The client will be available on: http://localhost:5173
+- The server will be available on: http://localhost:3000
+- The API documentation will be available on: http://localhost:3000/api
 
 ## Screenshots
 
