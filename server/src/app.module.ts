@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { QuoteModule } from './quote/quote.module';
+import { Quote } from './quote/entities/quote.entity';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { QuoteModule } from './quote/quote.module';
       password: process.env.DATABASE_PASSWORD || 'password123',
       database: process.env.DATABASE_NAME || 'quote_vault_db',
       autoLoadEntities: true,
+      entities: [Quote],
       synchronize: true,
     }),
     QuoteModule,
