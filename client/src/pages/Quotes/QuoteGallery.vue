@@ -1,22 +1,37 @@
 <script setup lang="ts">
-import { ref, onMounted, watch, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted, computed } from 'vue'
 import { useInfiniteQuery } from '@tanstack/vue-query'
 import QuoteCard from './QuoteCard.vue'
 import { QuoteIcon, PlusCircle } from 'lucide-vue-next'
 import type { Quote } from '@/types/Quotes'
 import { getQuotes } from '@/helpers/fetchers'
 
-const observerTarget = ref<HTMLElement | null>(null)
+const props = defineProps<{
+  searchQuery: string
+  selectedCategory: string
+  selectedTags: string[]
+}>()
 
-// Query function
-const fetchQuotes = async ({ pageParam = 1 }) => {
-  // pageParam starts at 1
-  const res = await getQuotes({ page: pageParam, limit: 6 })
-  return res
-}
+// Query function — includes filters
+const fetchQuotes = async ({ pageParam = 1 }) =>
+  getQuotes({
+    page: pageParam,
+    limit: 6,
+    query: props.searchQuery,
+    category: props.selectedCategory,
+    tags: props.selectedTags,
+  })
+
+// Make queryKey reactive using computed
+const queryKey = computed(() => [
+  'quotes',
+  props.searchQuery,
+  props.selectedCategory,
+  props.selectedTags,
+])
 
 const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } = useInfiniteQuery({
-  queryKey: ['quotes'],
+  queryKey,
   queryFn: fetchQuotes,
   getNextPageParam: (lastPage, pages) => (lastPage.hasMore ? pages.length + 1 : undefined),
   initialPageParam: 1,
@@ -32,7 +47,9 @@ watch(data, (val) => {
   }
 })
 
-// IntersectionObserver for infinite scroll
+// Infinite scroll observer
+const observerTarget = ref<HTMLElement | null>(null)
+
 onMounted(() => {
   watch(
     observerTarget,
