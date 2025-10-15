@@ -1,64 +1,6 @@
-<template>
-  <div class="quote-search">
-    <!-- Search bar and filters -->
-    <div class="search-bar">
-      <div class="search-input">
-        <span class="icon">🔍</span>
-        <input
-          type="text"
-          v-model="query"
-          placeholder="Search quotes, authors, or keywords..."
-          @keypress.enter="handleSearch"
-        />
-      </div>
-
-      <div class="category-select">
-        <select v-model="selectedCategory">
-          <option value="all">All Categories</option>
-          <option v-for="category in categories" :key="category" :value="category.toLowerCase()">
-            {{ category }}
-          </option>
-        </select>
-      </div>
-
-      <button class="btn-accent" @click="handleSearch">Search</button>
-    </div>
-
-    <!-- Tag filter section -->
-    <div class="tag-filter">
-      <div class="tag-header">
-        <span class="icon">🏷️</span>
-        <span class="label">Filter by Tags:</span>
-        <button v-if="selectedTags.length" class="btn-clear" @click="clearAllTags">
-          Clear all
-        </button>
-      </div>
-
-      <!-- Selected Tags -->
-      <div v-if="selectedTags.length" class="tag-list">
-        <span v-for="tag in selectedTags" :key="tag" class="tag active">
-          #{{ tag }}
-          <button class="remove" @click="removeTag(tag)">×</button>
-        </span>
-      </div>
-
-      <!-- Available Tags -->
-      <div class="tag-list">
-        <button
-          v-for="tag in availableTags.filter((t) => !selectedTags.includes(t))"
-          :key="tag"
-          class="tag"
-          @click="addTag(tag)"
-        >
-          #{{ tag }}
-        </button>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref } from 'vue'
+import { Search, Tag } from 'lucide-vue-next'
 
 interface QuoteSearchProps {
   onSearch?: (query: string, category: string, tags: string[]) => void
@@ -90,6 +32,65 @@ function clearAllTags(): void {
   selectedTags.value = []
 }
 </script>
+
+<template>
+  <div class="quote-search">
+    <!-- Search bar and filters -->
+    <div class="search-bar">
+      <div class="search-input">
+        <Search class="icon" :size="20" />
+        <input
+          type="text"
+          v-model="query"
+          placeholder="Search quotes, authors, or keywords..."
+          @keypress.enter="handleSearch"
+        />
+      </div>
+
+      <div class="category-select">
+        <select v-model="selectedCategory">
+          <option value="all">All Categories</option>
+          <option v-for="category in categories" :key="category" :value="category.toLowerCase()">
+            {{ category }}
+          </option>
+        </select>
+      </div>
+
+      <button class="btn-accent" @click="handleSearch">Search</button>
+    </div>
+
+    <!-- Tag filter section -->
+    <div class="tag-filter">
+      <div class="tag-header">
+        <Tag :size="16" class="icon" />
+        <span class="label">Filter by Tags:</span>
+        <button v-if="selectedTags.length" class="btn-clear" @click="clearAllTags">
+          Clear all
+        </button>
+      </div>
+
+      <!-- Selected Tags -->
+      <div v-if="selectedTags.length" class="tag-list">
+        <span v-for="tag in selectedTags" :key="tag" class="tag active">
+          #{{ tag }}
+          <button class="remove" @click="removeTag(tag)">×</button>
+        </span>
+      </div>
+
+      <!-- Available Tags -->
+      <div class="tag-list">
+        <button
+          v-for="tag in availableTags.filter((t) => !selectedTags.includes(t))"
+          :key="tag"
+          class="tag"
+          @click="addTag(tag)"
+        >
+          #{{ tag }}
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style scoped>
 .quote-search {
@@ -132,7 +133,9 @@ function clearAllTags(): void {
   font-size: 0.95rem;
   background-color: hsl(var(--background) / 0.5);
   color: hsl(var(--foreground));
-  transition: border 0.2s, background 0.2s;
+  transition:
+    border 0.2s,
+    background 0.2s;
 }
 
 .search-input input:focus {
@@ -148,7 +151,9 @@ function clearAllTags(): void {
   background-color: hsl(var(--background) / 0.5);
   color: hsl(var(--foreground));
   min-width: 10rem;
-  transition: border 0.2s, background 0.2s;
+  transition:
+    border 0.2s,
+    background 0.2s;
 }
 
 .category-select select:focus {
@@ -164,7 +169,9 @@ function clearAllTags(): void {
   border-radius: var(--radius);
   cursor: pointer;
   font-weight: 500;
-  transition: opacity 0.2s, box-shadow 0.2s;
+  transition:
+    opacity 0.2s,
+    box-shadow 0.2s;
 }
 
 .btn-accent:hover {
@@ -228,7 +235,10 @@ function clearAllTags(): void {
   padding: 0.25rem 0.5rem;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, border 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border 0.2s;
 }
 
 .tag:hover {

@@ -17,7 +17,8 @@ import { ArrowRight } from 'lucide-vue-next'
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  align-items: flex-start;
+  align-items: center;
+  margin-top: 48px;
 }
 
 .cta-button {

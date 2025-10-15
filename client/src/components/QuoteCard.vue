@@ -1,3 +1,17 @@
+<script setup lang="ts">
+import { QuoteIcon } from 'lucide-vue-next'
+import type { Quote } from '@/types/Quotes'
+
+const props = defineProps<{
+  quote: Quote
+  onClick?: (quote: Quote) => void
+}>()
+
+function handleClick() {
+  if (props.onClick) props.onClick(props.quote)
+}
+</script>
+
 <template>
   <div class="quote-card" @click="handleClick">
     <div class="quote-icon">
@@ -23,20 +37,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { QuoteIcon } from 'lucide-vue-next'
-import type { Quote } from '@/types/Quotes'
-
-const props = defineProps<{
-  quote: Quote
-  onClick?: (quote: Quote) => void
-}>()
-
-function handleClick() {
-  if (props.onClick) props.onClick(props.quote)
-}
-</script>
 
 <style scoped>
 .quote-card {
