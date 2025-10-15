@@ -2,13 +2,13 @@
 import { QuoteIcon } from 'lucide-vue-next'
 import type { Quote } from '@/types/Quotes'
 
-const props = defineProps<{
+const { quote, onClick } = defineProps<{
   quote: Quote
   onClick?: (quote: Quote) => void
 }>()
 
 function handleClick() {
-  if (props.onClick) props.onClick(props.quote)
+  if (onClick) onClick(quote)
 }
 </script>
 
