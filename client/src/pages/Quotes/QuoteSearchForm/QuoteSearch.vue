@@ -55,8 +55,6 @@ function clearAllTags(): void {
           </option>
         </select>
       </div>
-
-      <button class="btn-accent" @click="handleSearch">Search</button>
     </div>
 
     <!-- Tag filter section -->
@@ -105,7 +103,7 @@ function clearAllTags(): void {
   flex-wrap: wrap;
   gap: 1rem;
   padding: 1.5rem;
-  background-color: hsl(var(--quote-bg));
+  background: var(--gradient-card);
   border-radius: var(--radius);
   align-items: center;
   box-shadow: var(--shadow-quote);
@@ -180,7 +178,7 @@ function clearAllTags(): void {
 }
 
 .tag-filter {
-  background-color: hsl(var(--quote-bg));
+  background: var(--gradient-card);
   border-radius: var(--radius);
   padding: 1rem;
   box-shadow: var(--shadow-quote);
