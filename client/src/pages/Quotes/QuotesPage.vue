@@ -2,10 +2,10 @@
 import { ref, computed } from 'vue'
 import { useQuery } from '@tanstack/vue-query'
 
-import QuoteHeader from '@/components/QuoteHeader.vue'
-import ResultsHeader from '@/components/ResultsHeader.vue'
-import QuoteGallery from '@/components/QuoteGallery.vue'
-import QuoteSearchForm from '@/components/QuoteSearchForm.vue'
+import QuoteHeader from '@/pages/Quotes/QuoteHeader.vue'
+import ResultsHeader from '@/pages/Quotes/ResultsHeader.vue'
+import QuoteGallery from '@/pages/Quotes/QuoteGallery.vue'
+import QuoteSearchForm from './QuoteSearchForm/QuoteSearchForm.vue'
 import { getQuoteTags } from '@/helpers/fetchers'
 
 // Fetch tags for filtering

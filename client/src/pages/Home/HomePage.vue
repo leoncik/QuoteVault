@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import CTA from '@/components/CTA.vue'
-import FeaturedQuote from '@/components/FeaturedQuote.vue'
-import LogoTitle from '@/components/LogoTitle.vue'
+import CTA from '@/pages/Home/CTA.vue'
+import FeaturedQuote from '@/pages/Home/FeaturedQuote.vue'
+import LogoTitle from '@/pages/Home/LogoTitle.vue'
 </script>
 
 <template>
