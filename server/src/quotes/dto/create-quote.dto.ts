@@ -4,8 +4,9 @@ export class CreateQuoteDto {
   @IsString()
   text: string;
 
+  // Todo: change for: authorName
   @IsString()
-  author: string;
+  name: string;
 
   @IsString()
   category: string;

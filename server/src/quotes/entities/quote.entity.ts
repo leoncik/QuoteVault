@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Author } from 'src/authors/entities/author.entity';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 
 @Entity()
 export class Quote {
@@ -8,8 +9,8 @@ export class Quote {
   @Column()
   text: string;
 
-  @Column()
-  author: string;
+  @ManyToOne(() => Author, (author) => author.quotes)
+  author: Author;
 
   @Column()
   category: string;
