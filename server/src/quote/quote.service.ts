@@ -29,6 +29,6 @@ export class QuoteService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} quote`;
+    return this.quotesRepository.delete(id)
   }
 }
