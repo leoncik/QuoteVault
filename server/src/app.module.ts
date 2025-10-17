@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { QuoteModule } from './quote/quote.module';
-import { Quote } from './quote/entities/quote.entity';
+import { QuotesModule } from './quotes/quotes.module';
+import { Quote } from './quotes/entities/quote.entity';
 
 @Module({
   imports: [
@@ -16,7 +16,7 @@ import { Quote } from './quote/entities/quote.entity';
       entities: [Quote],
       synchronize: true,
     }),
-    QuoteModule,
+    QuotesModule,
   ],
   controllers: [],
   providers: [],

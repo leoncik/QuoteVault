@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
 import { faker } from '@faker-js/faker';
-import { Quote } from '../../quote/entities/quote.entity';
+import { Quote } from '../../quotes/entities/quote.entity';
 
 
 export async function seedQuotes(dataSource: DataSource) {

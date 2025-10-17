@@ -1,11 +1,11 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, ValidationPipe } from '@nestjs/common';
-import { QuoteService } from './quote.service';
+import { QuotesService } from './quotes.service';
 import { CreateQuoteDto } from './dto/create-quote.dto';
 import { UpdateQuoteDto } from './dto/update-quote.dto';
 
-@Controller('quote')
+@Controller('quotes')
 export class QuoteController {
-  constructor(private readonly quoteService: QuoteService) {}
+  constructor(private readonly quoteService: QuotesService) {}
 
   @Post()
   create(@Body(new ValidationPipe()) createQuoteDto: CreateQuoteDto) {

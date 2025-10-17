@@ -6,7 +6,7 @@ import { Quote } from './entities/quote.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class QuoteService {
+export class QuotesService {
   constructor(
     @InjectRepository(Quote)
     private quotesRepository: Repository<Quote>,
