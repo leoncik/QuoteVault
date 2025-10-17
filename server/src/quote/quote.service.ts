@@ -21,7 +21,7 @@ export class QuoteService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} quote`;
+    return this.quotesRepository.findOneBy({ id });
   }
 
   update(id: number, updateQuoteDto: UpdateQuoteDto) {
