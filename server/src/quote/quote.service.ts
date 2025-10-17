@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateQuoteDto } from './dto/create-quote.dto';
 import { UpdateQuoteDto } from './dto/update-quote.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -20,8 +20,12 @@ export class QuoteService {
     return this.quotesRepository.find();
   }
 
-  findOne(id: number) {
-    return this.quotesRepository.findOneBy({ id });
+  async findOne(id: number) {
+    const quote = await this.quotesRepository.findOneBy({ id });
+    if (!quote) {
+      throw new NotFoundException(`Quote with ID ${id} not found`);
+    }
+    return quote;
   }
 
   update(id: number, updateQuoteDto: UpdateQuoteDto) {
@@ -29,6 +33,6 @@ export class QuoteService {
   }
 
   remove(id: number) {
-    return this.quotesRepository.delete(id)
+    return this.quotesRepository.delete(id);
   }
 }
