@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { QuoteModule } from './quote/quote.module';
 import { Quote } from './quote/entities/quote.entity';
@@ -20,7 +18,7 @@ import { Quote } from './quote/entities/quote.entity';
     }),
     QuoteModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
