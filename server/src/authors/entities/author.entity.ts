@@ -1,4 +1,4 @@
-import { Quote } from 'src/quotes/entities/quote.entity';
+import { Quote } from '../../quotes/entities/quote.entity';
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 
 
