@@ -37,9 +37,16 @@ export class QuotesService {
     return this.quotesRepository.save(quote);
   }
 
-  findAll() {
-    // When fetching the quotes, it also joins the author table and include the full author object.
-    return this.quotesRepository.find({ relations: ['author'] });
+  async findAll(tags?: string[]) {
+    const query = this.quotesRepository
+      .createQueryBuilder('quote')
+      .leftJoinAndSelect('quote.author', 'author');
+
+    if (tags && tags.length > 0) {
+      query.andWhere('quote.tags && :tags', { tags });
+    }
+
+    return query.getMany();
   }
 
   async findOne(id: number) {
