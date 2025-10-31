@@ -1,0 +1,132 @@
+TODO:
+
+V2 :
+ Possibiliter aimer une citation.
+ Possibilité pour admin de supprimer les citations des autres.
+ Page data viz pour voir le nombre de citations au cours du temps et autre stats.
+ Dashboard perso avec ses citations (membre gold, etc.)
+---
+Notes DT
+QuoteVault
+Application web full-stack permettant de gérer et d'afficher des citations.
+Front-end développé avec Vue.js 3 et TypeScript.
+Gestion de l'état serveur avec TanStack Query.
+Affichage des citations avec défilement infini (infinite scroll).
+API RESTful construite avec NestJS.
+Structure modulaire facilitant la maintenance et l’évolutivité.
+Intégration d'une base de données PostgreSQL.
+Prise en charge des opérations CRUD complètes pour les citations.
+Environnement de développement dockerisé (Docker + docker-compose).
+---
+Project Name: QuoteHub
+Features & Structure
+
+Frontend (Vue.js):
+
+User Interface (UI): A clean, minimalistic interface where users can view, search, and add quotes.
+
+Components:
+
+Quote List: Displays a list of quotes.
+
+Quote Detail: Shows a full quote with author and other metadata.
+
+Quote Search: Allows users to search quotes by author, category, or keywords.
+
+Quote Form: Lets authenticated users add their own quotes (you could integrate user authentication).
+
+User Authentication (optional): Users can sign in and manage their favorite quotes, and submit their own.
+
+Vue Router: To navigate between pages like Home, Add Quote, and View Quote.
+
+Vuex (optional): To manage the state of user preferences or quotes in case of advanced features like "favorite quotes."
+
+Backend (Spring Boot):
+
+API Endpoints:
+
+GET /quotes: Fetch all quotes, possibly with pagination.
+
+GET /quotes/{id}: Get details of a specific quote.
+
+POST /quotes: Allow users to add new quotes (user must be authenticated).
+
+GET /quotes/search?query: Search quotes by keywords, author, or category.
+
+Security (optional): Add Spring Security to manage user authentication and authorization.
+
+Database (JPA/Hibernate): Use a database (like MySQL or PostgreSQL) to store quotes and user data (if you add authentication). You could have tables for quotes and users with relationships.
+
+DTOs & Services: Design your Data Transfer Objects and Services to handle data transformations and business logic.
+
+Optional Enhancements:
+
+User Authentication: Add JWT-based authentication (for API security).
+
+Favorites/Bookmarks: Let users save their favorite quotes.
+
+Categories/Tags: Organize quotes by tags like motivation, love, humor, etc.
+
+Random Quote: Display a random quote on the homepage.
+
+Admin Panel: Allow admins to moderate or approve user-submitted quotes.
+
+Database Structure:
+
+Quotes Table: Store quotes, authors, categories, etc.
+
+Users Table (if authentication is added): Store user information like username, email, and password.
+
+Tech Stack:
+
+Frontend:
+
+Vue.js (with Vue Router, Vuex if needed)
+
+Axios: For making API requests to your Spring Boot backend.
+
+Vuetify or Tailwind CSS: For UI styling.
+
+Backend:
+
+Spring Boot (with Spring Web, Spring Security, Spring Data JPA)
+
+H2, MySQL, or PostgreSQL: For database storage.
+
+Extras:
+
+Docker (optional): Containerize your Spring Boot application and Vue.js frontend.
+
+JWT Authentication: If you want to add secure login functionality.
+
+Steps to Build:
+
+Frontend:
+
+Set up a Vue project using Vue CLI.
+
+Design your components for displaying, searching, and adding quotes.
+
+Set up Axios to make API calls to the backend.
+
+Backend:
+
+Create a Spring Boot project with necessary dependencies (Spring Web, JPA, Security).
+
+Set up the database and create entity classes (Quote, User).
+
+Create the API endpoints to manage quotes and users.
+
+If you want authentication, integrate Spring Security and JWT.
+
+Connect the Frontend and Backend:
+
+Use Axios in Vue to interact with your Spring Boot API endpoints.
+
+Test basic CRUD functionality: adding, viewing, and searching quotes.
+
+Deploy (Optional):
+
+You can deploy your backend to Heroku, AWS, or another cloud provider.
+
+Deploy your frontend using Netlify, Vercel, or any static hosting platform.
