@@ -1,7 +1,13 @@
 {
-  "name": "openapi",
+  "name": "@quotevault/openapi",
   "module": "index.ts",
   "type": "module",
+  "exports": {
+    ".": "./src/gen/index.ts",
+    "./types": "./src/gen/types/index.ts",
+    "./hooks": "./src/gen/hooks/index.ts",
+    "./handlers": "./src/gen/handlers/index.ts"
+  },
   "scripts": {
     "generate": "kubb generate"
   },
