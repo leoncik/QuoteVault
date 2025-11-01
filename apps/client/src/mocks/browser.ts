@@ -10,6 +10,7 @@ import {
   listQuotesHandler,
   updateAuthorHandler,
   updateQuoteHandler,
+  getRandomQuoteHandler
 } from '@quotevault/openapi/handlers'
 
 export const worker = setupWorker(
@@ -19,6 +20,7 @@ export const worker = setupWorker(
   deleteQuoteHandler(),
   getAuthorByIdHandler(),
   getQuoteByIdHandler(),
+  getRandomQuoteHandler(),
   listAuthorsHandler(),
   listQuotesHandler(),
   updateAuthorHandler(),

@@ -4,6 +4,7 @@ export { deleteAuthorHandlerResponse200, deleteAuthorHandlerResponse404, deleteA
 export { deleteQuoteHandlerResponse200, deleteQuoteHandlerResponse404, deleteQuoteHandler } from "./deleteQuoteHandler.ts";
 export { getAuthorByIdHandlerResponse200, getAuthorByIdHandlerResponse404, getAuthorByIdHandler } from "./getAuthorByIdHandler.ts";
 export { getQuoteByIdHandlerResponse200, getQuoteByIdHandlerResponse404, getQuoteByIdHandler } from "./getQuoteByIdHandler.ts";
+export { getRandomQuoteHandlerResponse200, getRandomQuoteHandler } from "./getRandomQuoteHandler.ts";
 export { listAuthorsHandlerResponse200, listAuthorsHandler } from "./listAuthorsHandler.ts";
 export { listQuotesHandlerResponse200, listQuotesHandler } from "./listQuotesHandler.ts";
 export { updateAuthorHandlerResponse200, updateAuthorHandlerResponse400, updateAuthorHandlerResponse404, updateAuthorHandler } from "./updateAuthorHandler.ts";

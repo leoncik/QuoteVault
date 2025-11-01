@@ -202,6 +202,25 @@
         }
       }
     },
+    "/quotes/random": {
+      "get": {
+        "tags": ["quotes"],
+        "summary": "Get a random quote",
+        "operationId": "getRandomQuote",
+        "responses": {
+          "200": {
+            "description": "Random quote retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Quote"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/quotes/{quoteId}": {
       "get": {
         "tags": ["quotes"],

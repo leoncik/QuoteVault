@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
 import type { Quote } from '@/types/Quotes'
-import { getRandomQuote } from '@/helpers/fetchers'
+import { useGetRandomQuote } from '@quotevault/openapi/hooks'
 import { QuoteIcon, Feather } from 'lucide-vue-next'
 
 const queryClient = useQueryClient()
 
-const { data, isPending, isError, error, refetch, isRefetching } = useQuery<Quote>({
-  queryKey: ['randomQuote'],
-  queryFn: getRandomQuote,
-  // No auto refetching when switching tabs.
-  refetchOnWindowFocus: false,
+const { data, isPending, isError, error, refetch, isRefetching } = useGetRandomQuote({
+  query: {
+    // No auto refetching when switching tabs.
+    refetchOnWindowFocus: false,
+  }
 })
 
 function getNewQuote() {

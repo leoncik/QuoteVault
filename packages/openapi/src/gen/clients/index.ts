@@ -4,6 +4,7 @@ export { deleteAuthor } from "./deleteAuthor.ts";
 export { deleteQuote } from "./deleteQuote.ts";
 export { getAuthorById } from "./getAuthorById.ts";
 export { getQuoteById } from "./getQuoteById.ts";
+export { getRandomQuote } from "./getRandomQuote.ts";
 export { listAuthors } from "./listAuthors.ts";
 export { listQuotes } from "./listQuotes.ts";
 export { updateAuthor } from "./updateAuthor.ts";

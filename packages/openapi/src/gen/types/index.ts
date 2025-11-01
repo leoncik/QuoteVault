@@ -5,6 +5,7 @@ export type { DeleteAuthorPathParams, DeleteAuthor200, DeleteAuthor404, DeleteAu
 export type { DeleteQuotePathParams, DeleteQuote200, DeleteQuote404, DeleteQuoteMutationResponse, DeleteQuoteMutation } from "./DeleteQuote.ts";
 export type { GetAuthorByIdPathParams, GetAuthorById200, GetAuthorById404, GetAuthorByIdQueryResponse, GetAuthorByIdQuery } from "./GetAuthorById.ts";
 export type { GetQuoteByIdPathParams, GetQuoteById200, GetQuoteById404, GetQuoteByIdQueryResponse, GetQuoteByIdQuery } from "./GetQuoteById.ts";
+export type { GetRandomQuote200, GetRandomQuoteQueryResponse, GetRandomQuoteQuery } from "./GetRandomQuote.ts";
 export type { ListAuthors200, ListAuthorsQueryResponse, ListAuthorsQuery } from "./ListAuthors.ts";
 export type { ListQuotes200, ListQuotesQueryResponse, ListQuotesQuery } from "./ListQuotes.ts";
 export type { Quote } from "./Quote.ts";
