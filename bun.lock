@@ -94,7 +94,10 @@
       "devDependencies": {
         "@kubb/cli": "^4.4.1",
         "@kubb/core": "^4.4.1",
+        "@kubb/plugin-msw": "^4.4.1",
         "@kubb/plugin-oas": "^4.4.1",
+        "@kubb/plugin-ts": "^4.4.1",
+        "@kubb/plugin-vue-query": "^4.4.1",
         "@types/bun": "latest",
         "ajv": "^8.17.1",
       },
@@ -420,7 +423,19 @@
 
     "@kubb/oas": ["@kubb/oas@4.4.1", "", { "dependencies": { "@redocly/openapi-core": "^2.8.0", "hotscript": "^1.0.13", "json-schema-to-ts": "^3.1.1", "jsonpointer": "^5.0.1", "oas": "^28.3.0", "oas-normalize": "^15.0.2", "openapi-types": "^12.1.3", "remeda": "^2.32.0", "swagger2openapi": "^7.0.8", "ts-toolbelt": "^9.6.0" } }, "sha512-wkBA84hFos2MrchFvS7x/PwE6uId9N39qTf9TZht57SfOCqWCE2voWAJ9M2cP+4nT/HNalAX1shMeRUUHbuf9w=="],
 
+    "@kubb/plugin-client": ["@kubb/plugin-client@4.4.1", "", { "dependencies": { "@kubb/core": "4.4.1", "@kubb/oas": "4.4.1", "@kubb/plugin-oas": "4.4.1", "@kubb/plugin-ts": "4.4.1", "@kubb/plugin-zod": "4.4.1", "@kubb/react-fabric": "0.2.10" }, "peerDependencies": { "axios": "^1.7.2" }, "optionalPeers": ["axios"] }, "sha512-ljg9japOy+JSkoMitsTrevYaKy9Z+cOs+ukbiDNeHVriY7zA8m4OSrCTILDaBMHcyu+rU7t+t2TYsiGjpuKqfw=="],
+
+    "@kubb/plugin-faker": ["@kubb/plugin-faker@4.4.1", "", { "dependencies": { "@kubb/core": "4.4.1", "@kubb/oas": "4.4.1", "@kubb/plugin-oas": "4.4.1", "@kubb/plugin-ts": "4.4.1", "@kubb/react-fabric": "0.2.10" } }, "sha512-yoX5EdO0bYGgmaJsZkD5wzrA6FRHwNWsm6Wy6DcyRrzxrzBfes3oO75Ut2z3jlQMgArUGMKfSgIS/2OwHBaT6g=="],
+
+    "@kubb/plugin-msw": ["@kubb/plugin-msw@4.4.1", "", { "dependencies": { "@kubb/core": "4.4.1", "@kubb/oas": "4.4.1", "@kubb/plugin-faker": "4.4.1", "@kubb/plugin-oas": "4.4.1", "@kubb/plugin-ts": "4.4.1", "@kubb/react-fabric": "0.2.10" } }, "sha512-KKvGgfJEIqTqzLPe5RrzBPAlACF1uo/RNepG5rRBjps0wgpUBuUnW75pPOG6S7gG8HUnwckJ/DSDKFToP19gXw=="],
+
     "@kubb/plugin-oas": ["@kubb/plugin-oas@4.4.1", "", { "dependencies": { "@kubb/core": "4.4.1", "@kubb/oas": "4.4.1", "@kubb/react-fabric": "0.2.10", "@stoplight/yaml": "^4.3.0", "p-limit": "^7.2.0", "remeda": "^2.32.0" } }, "sha512-r04BLFNqHju3N5a881QbFNtFKOibG2riMLZKOkX6OLX6cySOi1pXmdLp0DzJK6FkqicMgPkqWZhYbPrzzfZljw=="],
+
+    "@kubb/plugin-ts": ["@kubb/plugin-ts@4.4.1", "", { "dependencies": { "@kubb/core": "4.4.1", "@kubb/fabric-core": "0.2.10", "@kubb/oas": "4.4.1", "@kubb/plugin-oas": "4.4.1", "@kubb/react-fabric": "0.2.10", "remeda": "^2.32.0", "typescript": "5.9.3" } }, "sha512-sppzsSH8B7qc8c9v2Yp3v3PT9o/2yU1QS0WHl3V/Y8JXnbXQ3d1c+XMCeft037aTGlpecqJGDGzWP6wEGAacIw=="],
+
+    "@kubb/plugin-vue-query": ["@kubb/plugin-vue-query@4.4.1", "", { "dependencies": { "@kubb/core": "4.4.1", "@kubb/oas": "4.4.1", "@kubb/plugin-client": "4.4.1", "@kubb/plugin-oas": "4.4.1", "@kubb/plugin-ts": "4.4.1", "@kubb/plugin-zod": "4.4.1", "@kubb/react-fabric": "0.2.10", "remeda": "^2.32.0" } }, "sha512-Ky9rs4ZnSyjMBaz0MuO/QKjZTxJ1q46icI5GwaPD8dBvQs7xHrKTkp4RoAyFz2TNAIkjjp5TiVefdjy5yksmQg=="],
+
+    "@kubb/plugin-zod": ["@kubb/plugin-zod@4.4.1", "", { "dependencies": { "@kubb/core": "4.4.1", "@kubb/oas": "4.4.1", "@kubb/plugin-oas": "4.4.1", "@kubb/plugin-ts": "4.4.1", "@kubb/react-fabric": "0.2.10" } }, "sha512-SKZGK3jUx6GUhLX8f/2128/l8dm414ZOo+BQirCz92TY8CsPwy13XmkElfCKXBh9zs43+UfjCzEg1S5odmoD9w=="],
 
     "@kubb/react-fabric": ["@kubb/react-fabric@0.2.10", "", { "dependencies": { "@kubb/fabric-core": "0.2.10", "dedent": "^1.7.0", "execa": "^9.6.0", "indent-string": "^5.0.0", "natural-orderby": "^5.0.0", "react": "^19.2.0", "react-devtools-core": "6.1.2", "react-reconciler": "0.32.0", "signal-exit": "^4.1.0", "ws": "8.18.0" } }, "sha512-gLHSoI/yLa5yAe0ZFOXlRqGXYuoZz/lkVKh1XE5x0qZ0XCdpJTgIgF5NmcQzSnR05RvVi6Kz4giKErm8VbcBnw=="],
 
