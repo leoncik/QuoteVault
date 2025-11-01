@@ -8,23 +8,13 @@ import type { GetQuoteByIdQueryResponse, GetQuoteByIdPathParams, GetQuoteById404
 import type { RequestConfig, ResponseErrorConfig } from "@kubb/plugin-client/clients/axios";
 import type { QueryKey, QueryClient, QueryObserverOptions, UseQueryReturnType } from "@tanstack/vue-query";
 import type { MaybeRefOrGetter } from "vue";
+import { getQuoteById } from "../clients/getQuoteById.ts";
 import { queryOptions, useQuery } from "@tanstack/vue-query";
 import { toValue } from "vue";
 
 export const getQuoteByIdQueryKey = (quoteId: MaybeRefOrGetter<GetQuoteByIdPathParams["quoteId"]>) => [{ url: '/quotes/:quoteId', params: {quoteId:quoteId} }] as const
 
 export type GetQuoteByIdQueryKey = ReturnType<typeof getQuoteByIdQueryKey>
-
-/**
- * @summary Get quote by ID
- * {@link /quotes/:quoteId}
- */
-export async function getQuoteById(quoteId: GetQuoteByIdPathParams["quoteId"], config: Partial<RequestConfig> & { client?: typeof fetch } = {}) {
-  const { client: request = fetch, ...requestConfig } = config  
-  
-  const res = await request<GetQuoteByIdQueryResponse, ResponseErrorConfig<GetQuoteById404>, unknown>({ method : "GET", url : `/quotes/${quoteId}`, ... requestConfig })  
-  return res.data
-}
 
 export function getQuoteByIdQueryOptions(quoteId: MaybeRefOrGetter<GetQuoteByIdPathParams["quoteId"]>, config: Partial<RequestConfig> & { client?: typeof fetch } = {}) {
   const queryKey = getQuoteByIdQueryKey(quoteId)

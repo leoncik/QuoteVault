@@ -8,24 +8,12 @@ import type { CreateQuoteMutationRequest, CreateQuoteMutationResponse, CreateQuo
 import type { RequestConfig, ResponseErrorConfig } from "@kubb/plugin-client/clients/axios";
 import type { MutationObserverOptions, QueryClient } from "@tanstack/vue-query";
 import type { MaybeRefOrGetter } from "vue";
+import { createQuote } from "../clients/createQuote.ts";
 import { useMutation } from "@tanstack/vue-query";
 
 export const createQuoteMutationKey = () => [{ url: '/quotes' }] as const
 
 export type CreateQuoteMutationKey = ReturnType<typeof createQuoteMutationKey>
-
-/**
- * @summary Create a new quote
- * {@link /quotes}
- */
-export async function createQuote(data: CreateQuoteMutationRequest, config: Partial<RequestConfig<CreateQuoteMutationRequest>> & { client?: typeof fetch } = {}) {
-  const { client: request = fetch, ...requestConfig } = config  
-  
-  const requestData = data  
-  
-  const res = await request<CreateQuoteMutationResponse, ResponseErrorConfig<CreateQuote400>, CreateQuoteMutationRequest>({ method : "POST", url : `/quotes`, data : requestData, ... requestConfig })  
-  return res.data
-}
 
 /**
  * @summary Create a new quote

@@ -8,24 +8,12 @@ import type { UpdateAuthorMutationRequest, UpdateAuthorMutationResponse, UpdateA
 import type { RequestConfig, ResponseErrorConfig } from "@kubb/plugin-client/clients/axios";
 import type { MutationObserverOptions, QueryClient } from "@tanstack/vue-query";
 import type { MaybeRefOrGetter } from "vue";
+import { updateAuthor } from "../clients/updateAuthor.ts";
 import { useMutation } from "@tanstack/vue-query";
 
 export const updateAuthorMutationKey = () => [{ url: '/authors/:authorId' }] as const
 
 export type UpdateAuthorMutationKey = ReturnType<typeof updateAuthorMutationKey>
-
-/**
- * @summary Update an existing author
- * {@link /authors/:authorId}
- */
-export async function updateAuthor(authorId: UpdateAuthorPathParams["authorId"], data: UpdateAuthorMutationRequest, config: Partial<RequestConfig<UpdateAuthorMutationRequest>> & { client?: typeof fetch } = {}) {
-  const { client: request = fetch, ...requestConfig } = config  
-  
-  const requestData = data  
-  
-  const res = await request<UpdateAuthorMutationResponse, ResponseErrorConfig<UpdateAuthor400 | UpdateAuthor404>, UpdateAuthorMutationRequest>({ method : "PUT", url : `/authors/${authorId}`, data : requestData, ... requestConfig })  
-  return res.data
-}
 
 /**
  * @summary Update an existing author

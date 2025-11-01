@@ -8,22 +8,12 @@ import type { DeleteQuoteMutationResponse, DeleteQuotePathParams, DeleteQuote404
 import type { RequestConfig, ResponseErrorConfig } from "@kubb/plugin-client/clients/axios";
 import type { MutationObserverOptions, QueryClient } from "@tanstack/vue-query";
 import type { MaybeRefOrGetter } from "vue";
+import { deleteQuote } from "../clients/deleteQuote.ts";
 import { useMutation } from "@tanstack/vue-query";
 
 export const deleteQuoteMutationKey = () => [{ url: '/quotes/:quoteId' }] as const
 
 export type DeleteQuoteMutationKey = ReturnType<typeof deleteQuoteMutationKey>
-
-/**
- * @summary Delete a quote
- * {@link /quotes/:quoteId}
- */
-export async function deleteQuote(quoteId: DeleteQuotePathParams["quoteId"], config: Partial<RequestConfig> & { client?: typeof fetch } = {}) {
-  const { client: request = fetch, ...requestConfig } = config  
-  
-  const res = await request<DeleteQuoteMutationResponse, ResponseErrorConfig<DeleteQuote404>, unknown>({ method : "DELETE", url : `/quotes/${quoteId}`, ... requestConfig })  
-  return res.data
-}
 
 /**
  * @summary Delete a quote

@@ -98,12 +98,14 @@
       "devDependencies": {
         "@kubb/cli": "^4.4.1",
         "@kubb/core": "^4.4.1",
+        "@kubb/plugin-client": "^4.4.1",
         "@kubb/plugin-msw": "^4.4.1",
         "@kubb/plugin-oas": "^4.4.1",
         "@kubb/plugin-ts": "^4.4.1",
         "@kubb/plugin-vue-query": "^4.4.1",
         "@types/bun": "latest",
         "ajv": "^8.17.1",
+        "msw": "^2.11.6",
       },
       "peerDependencies": {
         "typescript": "^5",

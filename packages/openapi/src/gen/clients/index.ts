@@ -1,0 +1,10 @@
+export { createAuthor } from "./createAuthor.ts";
+export { createQuote } from "./createQuote.ts";
+export { deleteAuthor } from "./deleteAuthor.ts";
+export { deleteQuote } from "./deleteQuote.ts";
+export { getAuthorById } from "./getAuthorById.ts";
+export { getQuoteById } from "./getQuoteById.ts";
+export { listAuthors } from "./listAuthors.ts";
+export { listQuotes } from "./listQuotes.ts";
+export { updateAuthor } from "./updateAuthor.ts";
+export { updateQuote } from "./updateQuote.ts";

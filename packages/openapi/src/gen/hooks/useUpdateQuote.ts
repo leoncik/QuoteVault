@@ -8,24 +8,12 @@ import type { UpdateQuoteMutationRequest, UpdateQuoteMutationResponse, UpdateQuo
 import type { RequestConfig, ResponseErrorConfig } from "@kubb/plugin-client/clients/axios";
 import type { MutationObserverOptions, QueryClient } from "@tanstack/vue-query";
 import type { MaybeRefOrGetter } from "vue";
+import { updateQuote } from "../clients/updateQuote.ts";
 import { useMutation } from "@tanstack/vue-query";
 
 export const updateQuoteMutationKey = () => [{ url: '/quotes/:quoteId' }] as const
 
 export type UpdateQuoteMutationKey = ReturnType<typeof updateQuoteMutationKey>
-
-/**
- * @summary Update a quote
- * {@link /quotes/:quoteId}
- */
-export async function updateQuote(quoteId: UpdateQuotePathParams["quoteId"], data: UpdateQuoteMutationRequest, config: Partial<RequestConfig<UpdateQuoteMutationRequest>> & { client?: typeof fetch } = {}) {
-  const { client: request = fetch, ...requestConfig } = config  
-  
-  const requestData = data  
-  
-  const res = await request<UpdateQuoteMutationResponse, ResponseErrorConfig<UpdateQuote400 | UpdateQuote404>, UpdateQuoteMutationRequest>({ method : "PUT", url : `/quotes/${quoteId}`, data : requestData, ... requestConfig })  
-  return res.data
-}
 
 /**
  * @summary Update a quote

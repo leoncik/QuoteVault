@@ -7,23 +7,13 @@ import fetch from "@kubb/plugin-client/clients/axios";
 import type { ListAuthorsQueryResponse } from "../types/ListAuthors.ts";
 import type { RequestConfig, ResponseErrorConfig } from "@kubb/plugin-client/clients/axios";
 import type { QueryKey, QueryClient, QueryObserverOptions, UseQueryReturnType } from "@tanstack/vue-query";
+import { listAuthors } from "../clients/listAuthors.ts";
 import { queryOptions, useQuery } from "@tanstack/vue-query";
 import { toValue } from "vue";
 
 export const listAuthorsQueryKey = () => [{ url: '/authors' }] as const
 
 export type ListAuthorsQueryKey = ReturnType<typeof listAuthorsQueryKey>
-
-/**
- * @summary List all authors
- * {@link /authors}
- */
-export async function listAuthors(config: Partial<RequestConfig> & { client?: typeof fetch } = {}) {
-  const { client: request = fetch, ...requestConfig } = config  
-  
-  const res = await request<ListAuthorsQueryResponse, ResponseErrorConfig<Error>, unknown>({ method : "GET", url : `/authors`, ... requestConfig })  
-  return res.data
-}
 
 export function listAuthorsQueryOptions(config: Partial<RequestConfig> & { client?: typeof fetch } = {}) {
   const queryKey = listAuthorsQueryKey()

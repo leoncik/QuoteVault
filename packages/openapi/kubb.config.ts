@@ -3,6 +3,7 @@ import { pluginOas } from '@kubb/plugin-oas'
 import { pluginMsw } from '@kubb/plugin-msw'
 import { pluginTs } from '@kubb/plugin-ts'
 import { pluginVueQuery } from '@kubb/plugin-vue-query'
+import { pluginClient } from '@kubb/plugin-client'
 
 export default defineConfig(() => {
   return {
@@ -19,7 +20,8 @@ export default defineConfig(() => {
         pluginOas(),
         pluginMsw(),
         pluginTs(),
-        pluginVueQuery()
+        pluginVueQuery(),
+        pluginClient()
     ],
   }
 })

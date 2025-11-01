@@ -8,23 +8,13 @@ import type { GetAuthorByIdQueryResponse, GetAuthorByIdPathParams, GetAuthorById
 import type { RequestConfig, ResponseErrorConfig } from "@kubb/plugin-client/clients/axios";
 import type { QueryKey, QueryClient, QueryObserverOptions, UseQueryReturnType } from "@tanstack/vue-query";
 import type { MaybeRefOrGetter } from "vue";
+import { getAuthorById } from "../clients/getAuthorById.ts";
 import { queryOptions, useQuery } from "@tanstack/vue-query";
 import { toValue } from "vue";
 
 export const getAuthorByIdQueryKey = (authorId: MaybeRefOrGetter<GetAuthorByIdPathParams["authorId"]>) => [{ url: '/authors/:authorId', params: {authorId:authorId} }] as const
 
 export type GetAuthorByIdQueryKey = ReturnType<typeof getAuthorByIdQueryKey>
-
-/**
- * @summary Get author by ID
- * {@link /authors/:authorId}
- */
-export async function getAuthorById(authorId: GetAuthorByIdPathParams["authorId"], config: Partial<RequestConfig> & { client?: typeof fetch } = {}) {
-  const { client: request = fetch, ...requestConfig } = config  
-  
-  const res = await request<GetAuthorByIdQueryResponse, ResponseErrorConfig<GetAuthorById404>, unknown>({ method : "GET", url : `/authors/${authorId}`, ... requestConfig })  
-  return res.data
-}
 
 export function getAuthorByIdQueryOptions(authorId: MaybeRefOrGetter<GetAuthorByIdPathParams["authorId"]>, config: Partial<RequestConfig> & { client?: typeof fetch } = {}) {
   const queryKey = getAuthorByIdQueryKey(authorId)

@@ -8,22 +8,12 @@ import type { DeleteAuthorMutationResponse, DeleteAuthorPathParams, DeleteAuthor
 import type { RequestConfig, ResponseErrorConfig } from "@kubb/plugin-client/clients/axios";
 import type { MutationObserverOptions, QueryClient } from "@tanstack/vue-query";
 import type { MaybeRefOrGetter } from "vue";
+import { deleteAuthor } from "../clients/deleteAuthor.ts";
 import { useMutation } from "@tanstack/vue-query";
 
 export const deleteAuthorMutationKey = () => [{ url: '/authors/:authorId' }] as const
 
 export type DeleteAuthorMutationKey = ReturnType<typeof deleteAuthorMutationKey>
-
-/**
- * @summary Delete an author
- * {@link /authors/:authorId}
- */
-export async function deleteAuthor(authorId: DeleteAuthorPathParams["authorId"], config: Partial<RequestConfig> & { client?: typeof fetch } = {}) {
-  const { client: request = fetch, ...requestConfig } = config  
-  
-  const res = await request<DeleteAuthorMutationResponse, ResponseErrorConfig<DeleteAuthor404>, unknown>({ method : "DELETE", url : `/authors/${authorId}`, ... requestConfig })  
-  return res.data
-}
 
 /**
  * @summary Delete an author

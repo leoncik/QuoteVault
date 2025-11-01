@@ -7,23 +7,13 @@ import fetch from "@kubb/plugin-client/clients/axios";
 import type { ListQuotesQueryResponse } from "../types/ListQuotes.ts";
 import type { RequestConfig, ResponseErrorConfig } from "@kubb/plugin-client/clients/axios";
 import type { QueryKey, QueryClient, QueryObserverOptions, UseQueryReturnType } from "@tanstack/vue-query";
+import { listQuotes } from "../clients/listQuotes.ts";
 import { queryOptions, useQuery } from "@tanstack/vue-query";
 import { toValue } from "vue";
 
 export const listQuotesQueryKey = () => [{ url: '/quotes' }] as const
 
 export type ListQuotesQueryKey = ReturnType<typeof listQuotesQueryKey>
-
-/**
- * @summary List all quotes
- * {@link /quotes}
- */
-export async function listQuotes(config: Partial<RequestConfig> & { client?: typeof fetch } = {}) {
-  const { client: request = fetch, ...requestConfig } = config  
-  
-  const res = await request<ListQuotesQueryResponse, ResponseErrorConfig<Error>, unknown>({ method : "GET", url : `/quotes`, ... requestConfig })  
-  return res.data
-}
 
 export function listQuotesQueryOptions(config: Partial<RequestConfig> & { client?: typeof fetch } = {}) {
   const queryKey = listQuotesQueryKey()

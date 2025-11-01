@@ -8,24 +8,12 @@ import type { CreateAuthorMutationRequest, CreateAuthorMutationResponse, CreateA
 import type { RequestConfig, ResponseErrorConfig } from "@kubb/plugin-client/clients/axios";
 import type { MutationObserverOptions, QueryClient } from "@tanstack/vue-query";
 import type { MaybeRefOrGetter } from "vue";
+import { createAuthor } from "../clients/createAuthor.ts";
 import { useMutation } from "@tanstack/vue-query";
 
 export const createAuthorMutationKey = () => [{ url: '/authors' }] as const
 
 export type CreateAuthorMutationKey = ReturnType<typeof createAuthorMutationKey>
-
-/**
- * @summary Create a new author
- * {@link /authors}
- */
-export async function createAuthor(data: CreateAuthorMutationRequest, config: Partial<RequestConfig<CreateAuthorMutationRequest>> & { client?: typeof fetch } = {}) {
-  const { client: request = fetch, ...requestConfig } = config  
-  
-  const requestData = data  
-  
-  const res = await request<CreateAuthorMutationResponse, ResponseErrorConfig<CreateAuthor400>, CreateAuthorMutationRequest>({ method : "POST", url : `/authors`, data : requestData, ... requestConfig })  
-  return res.data
-}
 
 /**
  * @summary Create a new author
