@@ -12,6 +12,8 @@ export default defineConfig(() => {
     },
     output: {
       path: './src/gen',
+      // Useful to make sure that no unused or legacy files are in the way.
+      clean: true,
     },
     plugins: [
         pluginOas(),
