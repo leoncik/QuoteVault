@@ -1,0 +1,1 @@
+{"type":"object","required":["text","author"],"properties":{"id":{"type":"integer","format":"int64","example":10},"text":{"type":"string","example":"Life is like riding a bicycle. To keep your balance, you must keep moving."},"author":{"$ref":"#/components/schemas/Author"}},"x-readme-ref-name":"Quote"}

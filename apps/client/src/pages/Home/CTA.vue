@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ArrowRight } from 'lucide-vue-next'
-import type { Pet } from 'openapi/types'
+import type { Author } from '@quotevault/openapi'
 
-let pet: Pet = {name: "John", photoUrls: [], category: {id: 1, name: "test"}, id: 1}
+let authorFromOpenApi: Author = { firstName: "Pessoa", lastName: "Fernando", bio: "lorem"}
 </script>
 
 <template>
