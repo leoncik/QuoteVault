@@ -2,7 +2,12 @@
   "name": "openapi",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "generate": "kubb generate"
+  },
   "devDependencies": {
+    "@kubb/cli": "^4.4.1",
+    "@kubb/core": "^4.4.1",
     "@types/bun": "latest"
   },
   "peerDependencies": {
