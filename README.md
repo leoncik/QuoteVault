@@ -1,6 +1,6 @@
 # quotevault
 
-Revoir ici : https://medium.com/@dxloop/contract-first-approach-with-node-js-and-openapi-for-rest-services-d2283a7ffd9d
+Ressources : https://medium.com/@dxloop/contract-first-approach-with-node-js-and-openapi-for-rest-services-d2283a7ffd9d
 
 To install dependencies:
 
