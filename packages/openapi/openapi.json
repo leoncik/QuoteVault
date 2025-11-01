@@ -1,0 +1,252 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/quotes": {
+      "post": {
+        "operationId": "QuoteController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateQuoteDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["Quote"]
+      },
+      "get": {
+        "operationId": "QuoteController_findAll",
+        "parameters": [
+          {
+            "name": "tags",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Quote"]
+      }
+    },
+    "/quotes/{id}": {
+      "get": {
+        "operationId": "QuoteController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Quote"]
+      },
+      "patch": {
+        "operationId": "QuoteController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateQuoteDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Quote"]
+      },
+      "delete": {
+        "operationId": "QuoteController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Quote"]
+      }
+    },
+    "/authors": {
+      "post": {
+        "operationId": "AuthorsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAuthorDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["Authors"]
+      },
+      "get": {
+        "operationId": "AuthorsController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Authors"]
+      }
+    },
+    "/authors/{id}": {
+      "get": {
+        "operationId": "AuthorsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Authors"]
+      },
+      "patch": {
+        "operationId": "AuthorsController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAuthorDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Authors"]
+      },
+      "delete": {
+        "operationId": "AuthorsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Authors"]
+      }
+    }
+  },
+  "info": {
+    "title": "QuoteVault API",
+    "description": "The API to handle the best quotes.",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [
+    {
+      "name": "quotes",
+      "description": ""
+    }
+  ],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "CreateQuoteDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "UpdateQuoteDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateAuthorDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "UpdateAuthorDto": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  }
+}

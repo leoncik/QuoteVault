@@ -1,0 +1,27 @@
+{
+  "name": "@quotevault/openapi",
+  "module": "index.ts",
+  "type": "module",
+  "exports": {
+    ".": "./src/gen/index.ts",
+    "./types": "./src/gen/types/index.ts",
+    "./hooks": "./src/gen/hooks/index.ts",
+    "./handlers": "./src/gen/handlers/index.ts"
+  },
+  "scripts": {
+    "generate": "kubb generate"
+  },
+  "devDependencies": {
+    "@kubb/cli": "^4.4.1",
+    "@kubb/core": "^4.4.1",
+    "@kubb/plugin-msw": "^4.4.1",
+    "@kubb/plugin-oas": "^4.4.1",
+    "@kubb/plugin-ts": "^4.4.1",
+    "@kubb/plugin-vue-query": "^4.4.1",
+    "@types/bun": "latest",
+    "ajv": "^8.17.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
